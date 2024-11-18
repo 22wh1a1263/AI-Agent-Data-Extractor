@@ -4,6 +4,7 @@ import requests
 import json
 from openai import ChatCompletion
 import os
+import openai
 
 # Set up Streamlit page configuration
 st.set_page_config(page_title="AI Agent Data Extractor", layout="wide")
@@ -75,7 +76,7 @@ if data is not None:
                     # Initialize OpenAI API client
                     ChatCompletion.api_key = openai_api_key
                     response = ChatCompletion.create(
-                        model="gpt-4",
+                        model="gpt-3.5-turbo",
                         messages=[
                             {"role": "system", "content": "Extract the email from the following text."},
                             {"role": "user", "content": f"Text: {simulated_search_results['snippets'][0]}"},
@@ -105,4 +106,3 @@ else:
 
 # Footer
 st.markdown("Created by Neha. Powered by Streamlit, OpenAI GPT, and SerpAPI.")
-
